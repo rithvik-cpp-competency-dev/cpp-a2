@@ -1,0 +1,77 @@
+#include <iostream>
+
+using namespace std;
+
+class Car{
+  private:
+    int release_year;
+    string customer;
+    int speed;
+  
+  public:
+    Car()
+    {
+        cout<<"Default constructor is called!\n";
+        this->release_year=0;
+        this->customer="none";
+        this->speed=0;
+    }
+    
+    Car(int year, string customer)
+    {
+        cout<<"Parameterized constructor is called!\n";
+        this->release_year=year;
+        this->customer=customer;
+        this->speed=0;
+    }
+    
+    ~Car()
+    {
+        cout<<"\nDestructor is called!";
+    }
+    
+    int getReleaseYear()
+    {
+        return this->release_year;
+    }
+    string getCustomer()
+    {
+        return this->customer;
+    }
+    int getSpeed()
+    {
+        return this->speed;
+    }
+    void accelarate()
+    {
+        this->speed+=10; 
+        return;
+    }
+    void brake()
+    {
+        this->speed-=10;
+        return;
+    }
+};
+
+int main()
+{
+    Car c(2020,"Honda");
+    cout<<"\nCar release year is: "<<c.getReleaseYear()<<"\n";
+    cout<<"Car customer name is: "<<c.getCustomer()<<"\n";
+    cout<<"\nInitial speed of car: "<<c.getSpeed()<<"\n\n";
+    for(int i=0;i<5;i++)
+    {
+        c.accelarate();
+        cout<<"Increasing the speed by 10: "<<c.getSpeed()<<"\n";
+    }
+    cout<<"\nCurrent speed of car is: "<<c.getSpeed()<<"\n\n";
+    for(int i=0;i<5;i++)
+    {
+        c.brake();
+        cout<<"Decreasing the speed by 10: "<<c.getSpeed()<<"\n";
+    }
+    cout<<"\nFinal speed of car is: "<<c.getSpeed()<<"\n";
+
+    return 0;
+}
